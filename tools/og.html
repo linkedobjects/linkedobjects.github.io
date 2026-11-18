@@ -1,0 +1,68 @@
+<!doctype html>
+<!-- The picture shown when a link to linkedobjects.org is shared (og.png, 1200 × 630).
+     node tools/og.mjs [path to playwright's index.mjs] renders this page to ../og.png. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  *{box-sizing:border-box;margin:0}
+  body{width:1200px;height:630px;overflow:hidden;position:relative;background:#f7f8f3;color:#17211b;font-family:Manrope,"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+  body::before{content:'';position:absolute;top:-220px;right:-200px;width:820px;height:820px;border-radius:50%;background:radial-gradient(circle,rgba(210,229,209,.85) 0%,rgba(247,248,243,0) 69%)}
+  .left{position:absolute;left:72px;top:64px;width:560px}
+  .brand{display:flex;align-items:center;gap:16px}
+  .brand svg{width:56px;height:56px}
+  .brand b{font-size:38px;font-weight:800;letter-spacing:-.045em}
+  .brand b i{font-style:normal;color:#ed7c2c}
+  .tag{margin-left:6px;padding:4px 10px;border:1px solid #dde3da;border-radius:8px;color:#5d685f;font:500 16px ui-monospace,Menlo,Consolas,monospace}
+  h1{margin-top:36px;font-size:74px;font-weight:700;letter-spacing:-.06em;line-height:1.02}
+  h1 em{font-style:normal;color:#c2590f;position:relative}
+  h1 em::after{content:'';position:absolute;left:4px;right:2px;bottom:-4px;height:8px;border-radius:8px;background:#ed7c2c;opacity:.5}
+  p{margin-top:28px;max-width:520px;color:#5d685f;font-size:25px;line-height:1.4}
+  .chips{position:absolute;left:72px;bottom:54px;display:flex;gap:12px}
+  .chips span{padding:8px 16px;border:1px solid #dde3da;border-radius:999px;background:rgba(255,255,255,.7);color:#4f5a51;font-size:19px;font-weight:600}
+  .wrap{position:absolute;left:668px;top:96px;width:470px}
+  .wrap::before{content:'';position:absolute;right:-26px;bottom:-26px;width:72%;height:60%;border-radius:30px;background:#dfe9dc;transform:rotate(4deg)}
+  .panel{position:relative;overflow:hidden;border:1px solid #ced7cb;border-radius:24px;background:#fffdf8;box-shadow:0 30px 80px rgba(36,51,40,.12),0 3px 12px rgba(36,51,40,.05)}
+  .head{display:flex;justify-content:space-between;align-items:center;padding:15px 22px;border-bottom:1px solid #e6ebe2;color:#566156;font:500 13px ui-monospace,Menlo,Consolas,monospace;letter-spacing:.05em;text-transform:uppercase}
+  .head span:last-child{display:flex;gap:6px}
+  .head i{width:8px;height:8px;border-radius:50%;background:#cfd8cb}
+  .head i:first-child{background:#ed7c2c}
+  .flow{padding:22px 24px 24px}
+  .obj{padding:14px 18px;border:1.5px solid #c9d2c5;border-radius:12px;background:#fff;font:16px/1.7 ui-monospace,Menlo,Consolas,monospace;white-space:pre}
+  .obj.hi{border-color:#ed7c2c;background:#fffaf5}
+  .obj small{display:block;margin-bottom:4px;color:#5d685f;font-size:12.5px;letter-spacing:.04em}
+  .k{color:#55705a}.u{color:#b95216}.s{color:#3a4a3f}
+  .link{display:flex;align-items:center;gap:10px;padding:6px 0 6px 24px;color:#5d685f;font:500 13px ui-monospace,Menlo,Consolas,monospace}
+  .link::before{content:'';width:1.5px;height:18px;background:#c9d2c5}
+  .link b{color:#ed7c2c;font-weight:500}
+</style>
+</head>
+<body>
+  <div class="left">
+    <div class="brand">
+      <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="11" fill="#17211B"/><rect x="8" y="14" width="12" height="12" rx="3.2" fill="#F7F8F3" opacity=".6"/><path d="M20 20h4" stroke="#F7F8F3" stroke-width="2.4" stroke-linecap="round"/><rect x="23" y="14" width="12" height="12" rx="3.2" fill="#ED7C2C"/></svg>
+      <b>linked<i>·</i>objects</b><span class="tag">LION</span>
+    </div>
+    <h1>JSON objects with a URL for a <em>name.</em></h1>
+    <p>Linked Object Notation: a small subset of JSON-LD, with no context to fetch.</p>
+  </div>
+  <div class="chips"><span>plain JSON</span><span>@id · @type</span><span>upgrades to JSON-LD</span></div>
+  <div class="wrap">
+    <div class="panel">
+      <div class="head"><span>two objects, one link</span><span><i></i><i></i><i></i></span></div>
+      <div class="flow">
+        <div class="obj"><small>GET /people/john.json</small>{
+  <span class="k">"@id"</span>: <span class="u">"/people/john.json"</span>,
+  <span class="k">"name"</span>: <span class="s">"John Lennon"</span>,
+  <span class="k">"spouse"</span>: <span class="u">"/people/cynthia.json"</span>
+}</div>
+        <div class="link"><span><b>↓</b> follow the URL</span></div>
+        <div class="obj hi"><small>GET /people/cynthia.json</small>{
+  <span class="k">"@id"</span>: <span class="u">"/people/cynthia.json"</span>,
+  <span class="k">"name"</span>: <span class="s">"Cynthia Lennon"</span>
+}</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
